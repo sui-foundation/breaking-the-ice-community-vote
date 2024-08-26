@@ -1,9 +1,8 @@
 'use client';
 
+import Loading from "@/components/Loading";
 import { useAuthCallback } from "@mysten/enoki/react";
 import { useEffect } from "react";
-import { ScaleLoader } from "react-spinners";
-
 
 export default function Page() {
 
@@ -16,8 +15,6 @@ export default function Page() {
 }, [handled]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen">
-      <ScaleLoader color="#4da2ff" />
-    </div>
+    <Loading />
   );
 }

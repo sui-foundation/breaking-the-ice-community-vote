@@ -59,6 +59,7 @@ import { ConnectModal } from "@mysten/dapp-kit";
 import Link from "next/link";
 import { useVoteTransaction } from "@/hooks/useVoteTransaction";
 import clientConfig from "@/config/clientConfig";
+import { montreal, neueBitBold } from "@/lib/fonts";
 
 
 
@@ -253,8 +254,8 @@ export default function VotingGrid() {
   };
   
   return (
-    <div>
-      <h1 className="text-4xl font-medium m-4 tracking-tighter">
+    <div className={`w-full flex flex-col items-center ${montreal.className} text-[#F7F7F7]`}>
+      <h1 className={`scroll-m-20 text-xl md:text-4xl font-extrabold tracking-tight md:text-5xl ${neueBitBold.className}`}>
         Sui Overflow: Community Favorite Award Voting
       </h1>
       <Form {...form}>

@@ -66,7 +66,7 @@ export default function RootLayout({
             >
               <AuthenticationProvider>
                 <CustomWalletProvider>
-                  <body className={inter.className}>{children}</body>
+                  <body className="bg-[#0C0F1D] ">{children}</body>
                   <Analytics />
                   <Toaster closeButton  />
                 </CustomWalletProvider>
