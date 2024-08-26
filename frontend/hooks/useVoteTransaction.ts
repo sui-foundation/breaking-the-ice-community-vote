@@ -1,12 +1,13 @@
 import clientConfig from "@/config/clientConfig";
 import { useCustomWallet } from "@/contexts/CustomWallet";
+import { SuiTransactionBlockResponse } from "@mysten/sui/client";
 import { Transaction } from "@mysten/sui/transactions";
 import toast from "react-hot-toast";
 
 export const useVoteTransaction = () => {
   const { sponsorAndExecuteTransactionBlock, address, getAddressSeed } = useCustomWallet();
 
-  const handleExecute = async (projectIds: number[]) => {
+  const handleExecute = async (projectIds: number[]): Promise<SuiTransactionBlockResponse> => {
     const recipient = address!;
     const txb = new Transaction();
     const votingProjectIds = txb.makeMoveVec({

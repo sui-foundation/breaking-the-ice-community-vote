@@ -46,7 +46,7 @@ interface CustomWalletContextProps {
   getAddressSeed: () => Promise<string>;
   sponsorAndExecuteTransactionBlock: (
     props: SponsorAndExecuteTransactionBlockProps
-  ) => Promise<SuiTransactionBlockResponse | void>;
+  ) => Promise<SuiTransactionBlockResponse>;
   executeTransactionBlockWithoutSponsorship: (
     props: ExecuteTransactionBlockWithoutSponsorshipProps
   ) => Promise<SuiTransactionBlockResponse | void>;
@@ -65,7 +65,9 @@ export const CustomWalletContext = createContext<CustomWalletContextProps>({
   address: undefined,
   jwt: undefined,
   getAddressSeed: async () => "",
-  sponsorAndExecuteTransactionBlock: async () => {},
+  sponsorAndExecuteTransactionBlock: async () => {
+    throw new Error("Not implemented");
+  },
   executeTransactionBlockWithoutSponsorship: async () => {},
   logout: () => {},
   redirectToAuthUrl: () => {},
@@ -179,10 +181,10 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
     options,
     includesTransferTx,
     allowedAddresses = [],
-  }: SponsorAndExecuteTransactionBlockProps): Promise<SuiTransactionBlockResponse | void> => {
+  }: SponsorAndExecuteTransactionBlockProps): Promise<SuiTransactionBlockResponse> => {
     if (!isConnected) {
       toast.error("Wallet is not connected");
-      return;
+      throw new Error("Wallet is not connected");
     }
     try {
       let digest = "";
@@ -232,6 +234,7 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
     } catch (err) {
       console.error(err);
       toast.error("Failed to sponsor and execute transaction block");
+      throw new Error("Failed to sponsor and execute transaction block");
     }
   };
 
