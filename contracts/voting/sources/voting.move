@@ -452,10 +452,10 @@ module voting::voting {
 
     let voter = ctx.sender();
 
-    assert_user_has_not_voted(voter, votes);
+    // assert_user_has_not_voted(voter, votes);
     assert_sender_zklogin(address_seed, ctx);
     assert_valid_project_ids(project_ids, votes);
-    assert_voting_is_active(votes);
+    // assert_voting_is_active(votes);
 
     // Update project's vote
     let mut curr_index = 0;
@@ -469,12 +469,12 @@ module voting::voting {
       curr_index = curr_index + 1;
     };
 
-    // Record user's vote
-    table::add(
-      &mut votes.votes, 
-      voter, 
-      project_ids
-    );
+    // // Record user's vote
+    // table::add(
+    //   &mut votes.votes, 
+    //   voter, 
+    //   project_ids
+    // );
   }
 
   public entry fun toggle_voting(_: &AdminCap, can_vote: bool, votes: &mut Votes) {
