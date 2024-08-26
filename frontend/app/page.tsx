@@ -52,6 +52,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { IconBrandYoutube } from "@tabler/icons-react";
 import { track } from "@vercel/analytics/react";
+import { useCustomWallet } from "@/contexts/CustomWallet";
+import { useAuthentication } from "@/contexts/Authentication";
+import { USER_ROLES } from "@/constants/USER_ROLES";
+import { ConnectModal } from "@mysten/dapp-kit";
+import Link from "next/link";
+
+
 
 type Project = {
   id: number;
@@ -150,7 +157,13 @@ export default function Page() {
 
   const client = useSuiClient(); // The SuiClient instance
   const enokiFlow = useEnokiFlow(); // The EnokiFlow instance
-  const { address: suiAddress } = useZkLogin(); // The zkLogin instance
+
+  const { redirectToAuthUrl, address: suiAddress } = useCustomWallet();
+  const { user, isLoading: isAuthLoading } = useAuthentication();
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
+
+  console.log(user, isAuthLoading);
+  
 
   const [votingInProgress, setVotingInProgress] = useState<boolean>(false);
 
@@ -215,20 +228,15 @@ export default function Page() {
     });
   }
 
-  const startLogin = async () => {
-    const promise = async () => {
-      window.location.href = await enokiFlow.createAuthorizationURL({
-        provider: "google",
-        clientId: process.env.GOOGLE_CLIENT_ID!,
-        redirectUrl: `${window.location.origin}/auth`,
-        network: "testnet",
-      });
-    };
+  // const startLogin = async () => {
+  //   const promise = async () => {
+  //     redirectToAuthUrl();
+  //   };
 
-    toast.promise(promise, {
-      loading: "Logging in...",
-    });
-  };
+  //   toast.promise(promise, {
+  //     loading: "Logging in...",
+  //   });
+  // };
 
   const fetchProjects = async () => {
     const res = await client.getObject({
@@ -484,9 +492,20 @@ export default function Page() {
         .
       </div>
       <div className="fixed sm:relative sm:bottom-0 w-full bottom-4 flex flex-row items-center justify-center">
-        <Button className="w-60 text-[#ffffff]" onClick={startLogin}>
-          Sign in with Google
-        </Button>
+      {[USER_ROLES.ROLE_2].map(
+          (role) => (
+            <div key={role} className="space-y-2">
+              <Link
+                href="#"
+                onClick={() => redirectToAuthUrl(role)}
+                className="flex items-center justify-center space-x-2 px-3 py-2 bg-gray-100 text-black w-[210px] rounded-lg"
+              >
+                <Image src="/google.svg" alt="Google" width={20} height={20} />
+                <div>Sign In with Google </div>
+              </Link>
+            </div>
+          )
+        )}
       </div>
     </div>
   );
