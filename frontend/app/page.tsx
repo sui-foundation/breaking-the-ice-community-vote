@@ -16,8 +16,52 @@ export default function Page() {
 
   return (
     <div className={`w-full flex flex-col items-center ${montreal.className} text-[#F7F7F7]`}>
+      <Image
+        src={heroBanner}
+        alt="banner"
+        className="object-cover h-full min-h-screen w-full max-h-screen border border-[#99EFE4] border-2 rounded-xl"
+      />
+      <div className="w-full h-full flex flex-col items-center justify-around top-0 absolute">
+        <span
+          className={`scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl ${neueBitBold.className}`}
+        >
+          WALRUS
+        </span>
+        <div className="flex flex-col items-center gap-0 sm:gap-2">
+          <span className="text-lg text-[#99EFE4]">
+            Walrus Devnet Hackathon - Community Vote
+          </span>
+          <div className="flex flex-row">
+            <span
+              className={`text-7xl text-[#99EFE4] text-center ${mondwest.className}`}
+            >
+              Breaking
+              <br /> the Ice
+            </span>
+            <Image src={Georgey} alt="georgey" className="w-24 -ml-6" />
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <Link
+            href="#"
+            onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}
+          >
+            <button className={`relative transform active:scale-95 transition-transform text-[#99EFE4] ${neueBitBold.className}`}>
+              <Image src={ButtonPrimary} alt="button" className="h-20 w-60" />
+              <div className="flex flex-col items-center justify-center w-full h-full absolute top-0 pl-2">
+                <span className="text-4xl">Sign In with Google</span>
+              </div>
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+
+  return (
+    <div className={`w-full flex flex-col items-center ${montreal.className} text-[#F7F7F7]`}>
       <div className="relative w-full px-4 py-1">
-        <div className="w-full h-full flex flex-col items-center justify-around top-0 absolute">
+        <div className="w-full h-full  flex flex-col items-center justify-around top-0 absolute">
           <span
             className={`scroll-m-20 text-xl md:text-4xl font-extrabold tracking-tight md:text-5xl ${neueBitBold.className}`}
           >
@@ -25,7 +69,7 @@ export default function Page() {
           </span>
           <div className="flex flex-col items-center gap-0 sm:gap-2">
             <span className="text-xs md:text-3xl text-[#99EFE4]">
-              Walrus Devnet Hackathon
+              Walrus Devnet Hackathon - Community Vote
             </span>
             <div className="flex flex-row">
               <span
@@ -62,7 +106,7 @@ export default function Page() {
         <Image
           src={heroBanner}
           alt="banner"
-          className="object-cover w-full border border-[#99EFE4] border-2 rounded-xl md:max-h-[700px]"
+          className="object-cover w-full  max-h-screen"
         />
       </div>
     </div>
