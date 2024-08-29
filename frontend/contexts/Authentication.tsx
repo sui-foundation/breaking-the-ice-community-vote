@@ -43,7 +43,7 @@ export const AuthenticationProvider = ({ children }: ChildrenProps) => {
           router.push("/");
         } else {
           // router.push(`/${newUser.role}`);
-          router.push("/vote");
+          router.push("/");
         }
       }
     },

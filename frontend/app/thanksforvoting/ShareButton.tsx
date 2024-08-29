@@ -21,8 +21,8 @@ export default function ShareButton() {
 
   return (
     <a href={link} target="_blank">
-      <Button variant={"outline"}>
-        Share your vote on <IconBrandX />
+      <Button variant={"outline"} className="bg-[#0C0F1D] border-[#99EFE4] text-[#99EFE4] hover:bg-[#4C4F5D]">
+        Share your vote on <IconBrandX  />
       </Button>
     </a>
   );

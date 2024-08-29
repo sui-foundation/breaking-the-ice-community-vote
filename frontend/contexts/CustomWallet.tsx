@@ -98,7 +98,6 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
           disconnect();
         }
         sessionStorage.clear();
-        router.push("/");
       },
     };
   }, [
