@@ -492,10 +492,10 @@ module voting::voting {
   }
 
   fun assert_valid_project_ids(project_ids: vector<u64>, votes: &Votes) {
-    assert!(
-      project_ids.length() <= 3, 
-      ETooManyVotes
-    );
+    // assert!(
+    //   project_ids.length() <= 3, 
+    //   ETooManyVotes
+    // );
     
     let mut curr_index = 0;
     let mut ids = vec_map::empty();
