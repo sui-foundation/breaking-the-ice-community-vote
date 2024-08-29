@@ -138,6 +138,8 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
   };
 
   const redirectToAuthUrl = (userRole: UserRole) => {
+    router.push("/auth");
+
     const protocol = window.location.protocol;
     const host = window.location.host;
     const customRedirectUri = `${protocol}//${host}/auth`;
