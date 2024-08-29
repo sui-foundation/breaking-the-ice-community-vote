@@ -188,10 +188,10 @@ export default function Page() {
             <span className="text-xs"></span>
             <div></div>
             <a
-              href="/terms-and-conditions"
+              href="https://breakingtheice.walrus.site/"
               className="text-sm underline hover:opacity-90"
             >
-              Terms & Conditions
+              Breaking the Ice site
             </a>
           </div>
         </div>
