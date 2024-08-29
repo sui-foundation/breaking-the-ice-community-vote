@@ -19,7 +19,7 @@ export default function ProjectCard({
 }) {
 
   return (
-    <div key={id} className="flex flex-col items-center justify-between bg-[#F7F7F7] text-[#0C0F1D] rounded-xl h-[600px] w-[450px] px-4 py-4 gap-6">
+    <div key={id} className="flex flex-col items-center justify-between bg-[#F7F7F7] text-[#0C0F1D] rounded-xl h-[600px] max-w-[450px] px-4 py-4 gap-6">
       <video width="320" height="320" controls className="border rounded-xl border-[#0C0F1D] border-4">
         <source src={`https://aggregator-devnet.walrus.space/v1/${videoBlobId}`}/>
       </video>
