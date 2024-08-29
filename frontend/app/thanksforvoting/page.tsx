@@ -4,7 +4,7 @@ import Image from "next/image";
 import FUD from "@/public/plotting.webp";
 import ShareButton from "./ShareButton";
 import { use, useEffect, useState } from "react";
-import { montreal } from "@/lib/fonts";
+import { mondwest, montreal } from "@/lib/fonts";
 
 export default function Page() {
 
@@ -24,7 +24,7 @@ export default function Page() {
           Thanks for voting!
         </h1>
         <p className="text-lg  text-center">
-          Your vote has been <a href={`https://suiscan.xyz/testnet/tx/${txnDigest}`} target="_blank" className="underline text-sky">recorded</a>. We&apos;ll announce the winners soon!
+          Your vote has been <a href={`https://suiscan.xyz/testnet/tx/${txnDigest}`} target="_blank" className={`underline text-[#99EFE4] after:content-['_↗']`}>recorded</a>. We&apos;ll announce the winners soon!
         </p>
       </div>
 

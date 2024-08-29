@@ -122,14 +122,14 @@ export default function ProjectCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] hover:bg-[#4C4F5D]" />
-          <CarouselNext  className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] hover:bg-[#4C4F5D]" />
+          <CarouselPrevious className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" />
+          <CarouselNext  className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" />
         </Carousel>
         <div className="flex w-full flex-row items-center justify-between gap-4 px-8">
           <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
             <LogOut className="rotate-180 text-red-500"/>
           </Button>
-          <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] hover:bg-[#4C4F5D]" onClick={hanldeSubmitVote}>
+          <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={hanldeSubmitVote}>
             Submit Vote
           </Button>
         </div>
@@ -138,8 +138,8 @@ export default function ProjectCarousel() {
   }
 
   return (
-    <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] hover:bg-[#4C4F5D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
-      Log In
+    <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
+      Sign in to vote
     </Button>
   )
 }
