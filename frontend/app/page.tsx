@@ -39,7 +39,7 @@ export default function Page() {
       </div>
       <div className="w-full px-4 py-1 flex flex-row items-center justify-center gap-4">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-full h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+          <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
             <div className="flex flex-col items-center w-full justify-center text-center items-center">
               <h2
                 className={`z-30 text-4xl sm:text-8xl text-[#99EFE4] text-center ${neueBitBold.className}`}
@@ -48,21 +48,21 @@ export default function Page() {
                 How Voting Works
               </h2>
               <span className="z-30 text-left">
-                <ul className="list-disc ps-6">
+                <ul className="list-disc ps-6 max-w-lg">
                   <li>
                     All elligible Breaking the Ice projects are included in the community vote. 
                   </li>
                   <li>
-                    The top 10 projects with the most votes will be selected for the peer approval round.
+                    The top X (filled in later) projects with the most votes will win $500 and be selected for the peer approval round.
                   </li>
                   <li>
-                    Everyone is allowed to vote for their favorite projects.
+                    Everyone is allowed to partipate in the community vote.
                   </li>
                 </ul>
               </span>
             </div>
           </div>
-          <div className="w-full h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+          <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
             <div className="flex flex-col items-center w-full justify-center text-center text-[#C684F6] items-center">
               <h2
                 className={`z-30 text-4xl sm:text-8xl text-[#C684F6] text-center ${neueBitBold.className}`}
@@ -71,12 +71,12 @@ export default function Page() {
                 How to Participate
               </h2>
               <span className="z-30 text-left">
-                <ul className="list-decimal ps-4 text-[#C684F6]">
+                <ul className="list-decimal ps-4 text-[#C684F6] max-w-lg">
                   <li>
-                    Explore the Breaking the Ice projects displayed below.
+                    Explore the Breaking the Ice projects.
                   </li>
                   <li>Click the checkbox to select a project for voting</li>
-                  <li>You can select up to 3 projects</li>
+                  <li>You can select as many projects as you like</li>
                   <li>Click the submit button to submit your vote - you can only submit your votes once</li>
                 </ul>
               </span>
