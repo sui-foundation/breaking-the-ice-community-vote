@@ -24,10 +24,10 @@ export default function ProjectCard({
         <source src={`https://aggregator-devnet.walrus.space/v1/${videoBlobId}`}/>
       </video>
       <div className="flex flex-col items-center justify-start grow gap-2">
-        <span className={`text-5xl text-center ${neueBitBold.className}`}>
+        <span className={`text-2xl md:text-5xl text-center ${neueBitBold.className}`}>
           {name}
         </span>
-        <span className={`text-xl ${montreal.className} px-8`}>
+        <span className={`text-sm md:text-xl ${montreal.className} px-8`}>
           {description}
         </span>
       </div>
