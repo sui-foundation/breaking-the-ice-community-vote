@@ -126,8 +126,8 @@ export default function ProjectCarousel() {
           <CarouselNext  className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] hover:bg-[#4C4F5D]" />
         </Carousel>
         <div className="flex w-full flex-row items-center justify-between gap-4 px-8">
-          <Button variant={"ghost"} size={"icon"} onClick={logout}>
-            <LogOut className="rotate-180"/>
+          <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
+            <LogOut className="rotate-180 text-red-500"/>
           </Button>
           <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] hover:bg-[#4C4F5D]" onClick={hanldeSubmitVote}>
             Submit Vote
