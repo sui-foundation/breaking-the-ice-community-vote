@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { useSuiClient } from "@mysten/dapp-kit";
 import clientConfig from "@/config/clientConfig";
 import { USER_ROLES } from "@/constants/USER_ROLES";
+import { useVoteTransaction } from "@/hooks/useVoteTransaction";
+import { toast } from "sonner";
 
 type Project = {
   id: number;
@@ -29,6 +31,10 @@ export default function ProjectCarousel() {
   const router = useRouter();
 
   const [projects, setProjects] = useState<Project[]>([]);
+
+  const [selectedProjects, setSelectedProjects] = useState<number[]>([]);
+
+  const { handleExecute } = useVoteTransaction();
 
   useEffect(() => {
     fetchProjects();
@@ -66,6 +72,38 @@ export default function ProjectCarousel() {
     setProjects(projects);
   };
 
+  const hanldeSubmitVote = async () => {
+
+
+    toast.promise(handleExecute(selectedProjects), {
+      loading: "Submitting your vote...",
+      success: (data) => {
+
+        localStorage.setItem(
+          "votedProjects",
+          selectedProjects
+            .map((projectId) => projects[projectId].name)
+            .join(";;")
+        );
+
+        localStorage.setItem("voteDigest", data.digest);
+
+        router.push("/thanksforvoting");
+        return "Your vote has been submitted"
+      },
+      error: "There was an error submitting your vote. Please try again.",
+    });
+
+  }
+
+  const handleSelectProject = (id: number) => {
+    if (selectedProjects.includes(id)) {
+      setSelectedProjects(selectedProjects.filter((projectId) => projectId !== id));
+    } else {
+      setSelectedProjects([...selectedProjects, id]);
+    }
+  };
+
   if (isConnected) {
     return (
       <div className="rounded-xl max-w-[80%] flex flex-col items-center justify-center py-4 gap-2">
@@ -79,6 +117,7 @@ export default function ProjectCarousel() {
                   votes={project.votes}
                   description={project.description}
                   videoBlobId={project.videoBlobId}
+                  onSelect={() => handleSelectProject(project.id)}
                 />
               </CarouselItem>
             ))}
@@ -90,9 +129,7 @@ export default function ProjectCarousel() {
           <Button variant={"ghost"} size={"icon"} onClick={logout}>
             <LogOut className="rotate-180"/>
           </Button>
-          <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] hover:bg-[#4C4F5D]" onClick={() => {
-            router.push('/thanksforvoting');
-          }}>
+          <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] hover:bg-[#4C4F5D]" onClick={hanldeSubmitVote}>
             Submit Vote
           </Button>
         </div>

@@ -7,13 +7,15 @@ export default function ProjectCard({
   name, 
   votes, 
   description, 
-  videoBlobId
+  videoBlobId,
+  onSelect
 }: {
   id: number;
   name: string;
   votes: number;
   description: string;
   videoBlobId: string;
+  onSelect: () => void;
 }) {
 
   return (
@@ -30,7 +32,7 @@ export default function ProjectCard({
         </span>
       </div>
       <div className="flex flex-row items-center justify-start gap-2">
-        <Checkbox />
+        <Checkbox onClick={onSelect} />
         <span>
           Select
         </span>
