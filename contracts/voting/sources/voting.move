@@ -24,13 +24,9 @@ module voting::voting {
   public struct Project has store {
     id: u64,
     name: string::String, 
-    // description: string::String, 
-    air_table_url: url::Url,
-    /* 
-    logo: ...,
-    video: ..., 
-    ...
-    */
+    description: string::String, 
+    video_blob_id: string::String, 
+    walrus_site_url: url::Url, 
     votes: u64
   }
 
@@ -43,397 +39,198 @@ module voting::voting {
       id: object::new(ctx),
       total_votes: 0, 
       project_list: vector[
-        Project {
+        Project { 
           id: 0, 
-          name: b"Aalps Protocol".to_string(),
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recI6k3PRC0113wDh"),
-          votes: 0
+          name: b"suiS3".to_string(),
+          description: b"S3 Simple Storage Service Protocol Written In Walrus".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
-        Project{
+        Project {
           id: 1, 
-          name: b"AdToken".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recd95WbIXs5qiLmM"),
-          votes: 0
+          name: b"SuiIP".to_string(),
+          description: b"SuiIP is the IP protection built for artist, content creators & NFT holders to list their IPs and earn royalties when IP is used by anyone on Sui ecosystem. This could be used by on-chain games to import digital assets like game characters directly into the game while protecting it's IP & earn royalties on top of this. ".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 2, 
-          name: b"Aeon".to_string(),
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recJHliYSNdxFXdCB"), 
-          votes: 0
+          name: b"SuiChat".to_string(),
+          description: b"Sui chat is the first p2p & group chatting protocol built on Sui & walrus. It leverages walrus to store media (like images & videos) & Sui network to send messages p2p. This platform is built to bring entire Sui community on-chain(from discord ofc!). A simple KYC process could be used to link twitter accounts with on-chain addresses & directly login using NFTs & SuiNS. Different Dapps can have their on group chats with gated access.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 3, 
-          name: b"AresRPG".to_string(),
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recg4WFsxsqg5toWO"),
-          votes: 0, 
+          name: b"tuskscipt".to_string(),
+          description: b"".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 4, 
-          name: b"BioWallet".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reckESZUYtBGNGYJv"),
-          votes: 0
-        }, 
+          name: b"de-docker-hub".to_string(),
+          description: b"Decentralized Docker Hub, store the Docker image in walrus".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
         Project {
           id: 5, 
-          name: b"BitsLab IDE".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recvjB1DqQ7nZk2Wi"),
-          votes: 0
+          name: b"Arrow".to_string(),
+          description: b"A secure way for sharing files.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 6, 
-          name: b"BullNow".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recrtOfluU0YewQqy"),
-          votes: 0
+          name: b"Nemo Protocol".to_string(),
+          description: b"The yield trading app on Sui. Fixed return & Leveraged yield. ".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 7, 
-          name: b"CLMM and Deepbook Market Making Vaulta".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recHgBwMFvFqb44l4"),
-          votes: 0
+          name: b"Walrus Guard".to_string(),
+          description: b"SaaS for Enterprise Disaster Recovery starting with a fremium model, key features to include -\n1. Scheduling of automated backups\n2. Secure and gated access control via multisig\n3. Quick recovery and redeploy\n4. Compliance Management etc".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 8, 
-          name: b"DegenHive".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recU3KMJmEed1G3eX"),
-          votes: 0
+          name: b"Suiftly.io".to_string(),
+          description: b"CDN optimizations for Sui Walrus. Load most blob under 100 milliseconds. \n\nMany ways to integrate, including a NPM package for automatic CDN to Walrus failover and CDN delivered blob validation.\n\nSee https://suiftly.io".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
         Project {
           id: 9, 
-          name: b"DoubleUp".to_string(), 
-          air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recFNsX6mqTpFX7MU"),
-          votes: 0
+          name: b"Mojo".to_string(),
+          description: b"I want to integrate music and crypto where artists will be paid thru sui rather than other forms of payments.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
         },
-        // Project {
-        //   id: 10, 
-        //   name: b"FlowX Finance - Aggregator".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recrZw4nvCIEOk6Oc"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 11, 
-        //   name: b"FoMoney".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recbTl14o86LXncUh"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 12, 
-        //   name: b"Fren Suipport".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recauWVk8gOWZhIHC"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 13, 
-        //   name: b"Goose Bumps".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recCKdwv2R7o90joP"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 14, 
-        //   name: b"Hakifi".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recKN9qyw3Io9DJGK"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 15, 
-        //   name: b"HexCapsule".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recoZ80nWldHy1Yh9"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 16, 
-        //   name: b"Homeless Hold'Em".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recsXgqOFnaB2SyCn"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 17, 
-        //   name: b"Hop Aggregator".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recrGCCis3ycjrrlq"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 18, 
-        //   name: b"Infinite Seas".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reckKAAvvIxwPZkYt"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 19, 
-        //   name: b"Kraken".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reciO3NPs5PuOGdOL"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 20, 
-        //   name: b"Kriya Credit".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recuCDmPfu8cjDNmG"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 21, 
-        //   name: b"Legato LBP".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/rec3HkYzRDSRqz5VY"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 22, 
-        //   name: b"LePoker".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recLsiw1viXM0g3Hs"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 23, 
-        //   name: b"Liquidity Garden".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recKhCUHnR2IWbN9J"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 24, 
-        //   name: b"LiquidLink".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recvPTjIbgBiKWzSu"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 25, 
-        //   name: b"Mineral".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recBQgTWtev3w612b"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 26, 
-        //   name: b"Mrc20protocol".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/rec9bM1r25BWGpFsK"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 27, 
-        //   name: b"Multichain Meme Creator".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recPHKpqDVrzcVKhN"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 28, 
-        //   name: b"Mystic Tarot".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recPQKiqo3VkWRTRL"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 29, 
-        //   name: b"Nimbus".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recH3VDKgDJUKXD6n"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 30, 
-        //   name: b"Orbital".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recxUMdUND0Zet9vZ"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 31, 
-        //   name: b"Pandora Finance".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recfftSBFjh5xJ4WW"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 32, 
-        //   name: b"Panther Wallet".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recK5alei9zoP6TWQ"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 33, 
-        //   name: b"PinataBot".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reciiS1VdHm79jQen"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 34, 
-        //   name: b"Private Transaction In Sui".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/rec20Bf40XfZOALKe"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 35,
-        //   name: b"Promise".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recvPpoJ7S4a6HcSv"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 36, 
-        //   name: b"Pump Up".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reckEQHRGv0PBS59U"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 37, 
-        //   name: b"Scam NFT detector".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recZrGwhqB9G0n8JQ"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 38, 
-        //   name: b"Shall We Move".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recrywtw02M5hv8O9"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 39, 
-        //   name: b"Shio".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recmgC1zo9IOpAN5w"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 40, 
-        //   name: b"Stashdrop".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recdSD9K7cJJpuMSJ"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 41, 
-        //   name: b"Stoked Finance".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recgIl4rt4WHly2KI"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 42, 
-        //   name: b"stream.gift".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reciwLIeAnDPYP3Re"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 43, 
-        //   name: b"Su Protocol".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recljFHxXfqoXm3iy"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 44, 
-        //   name: b"Sui dApp Starter".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recSc0FFQKTUMRnVP"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 45, 
-        //   name: b"Sui Metadata".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recyoA0rNYXWEgR9D"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 46, 
-        //   name: b"Sui simulator".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recZEsvZjI6WPymp0"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 47, 
-        //   name: b"sui-wormhole-native-token-transfer".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recCUvcinQxZDrqPH"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 48, 
-        //   name: b"SuiAutochess".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recFfGGW7lj69skWu"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 49, 
-        //   name: b"SuiFund".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recSqeDr8i1isZSeW"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 50, 
-        //   name: b"SuiGPT".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recxqubMauRZEnM08"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 51, 
-        //   name: b"SuiMate".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recBmhSGqbeh0wbHz"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 52, 
-        //   name: b"Suinfra – RPC Metrics Dashboard & Geo-Aware RPC Endpoint".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recPnt2C1pUf7wA67"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 53, 
-        //   name: b"SuiPass".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recJtsRwUqgYDUVRx"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 54, 
-        //   name: b"SuiSec Toolkit".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recwJ8YLkGYs9uaQY"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 55, 
-        //   name: b"SuiWeb".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reckOMVr5hHVCKQ5V"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 56, 
-        //   name: b"Summon Attack".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recnfbfOpSf15xmbB"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 57, 
-        //   name: b"The Wanderer".to_string(), 
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recamukcsSBjjcLBH"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 58, 
-        //   name: b"Trippple".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/rec1rXKOir9Zsk4LF"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 59, 
-        //   name: b"Wagmi Kitchen".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/reck0jOTWX9IbLDj0"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 60, 
-        //   name: b"Wave Wallet".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recXVLwFaHcnjJx8e"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 61, 
-        //   name: b"WebAuthn on SUI".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recD2ObsLZiblm1Dd"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 62, 
-        //   name: b"Wecastle".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recJ7NgQTZBa8B7Rw"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 63, 
-        //   name: b"wormhole-kit".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recN7oF15sUwAaSGi"),
-        //   votes: 0
-        // },
-        // Project {
-        //   id: 64, 
-        //   name: b"zk Reputation".to_string(),
-        //   air_table_url: url::new_unsafe_from_bytes(b"https://airtable.com/appInEqjBZ2YxoHgS/shrmgnQKAXwCnv4NY/tblJaA1KCQXwgcHtU/viwsKAEf1fDL8T6cS/recUDylUiyWglTJaP"),
-        //   votes: 0
-        // },
-        
+        Project {
+          id: 10, 
+          name: b"JarJar protocol".to_string(),
+          description: b"Ai gen protocol on SUI blockchain".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 11, 
+          name: b"LaplacePad".to_string(),
+          description: b"A token distribution project based on a lottery system.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 12, 
+          name: b"walrus-ga".to_string(),
+          description: b"Using GitHub Actions to deploy a Walrus website provides an automated workflow that allows automatic deployment with each code change, eliminating the need to worry about Walrus CLI configurations. In addition, GitHub simplifies version control and history tracking, providing clear proof of origin for each deployment, increasing reliability and transparency.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 13, 
+          name: b"NetSepio".to_string(),
+          description: b"NetSepio is revolutionizing internet access through the power of DePIN, empowering anyone to set up a VPN node and share their internet bandwidth, thus fostering a network that is both secure and universally accessible. By combining decentralized VPN (dVPN) and decentralized WiFi (dWiFi) technologies, our mission is to make the internet safer, more private, and available to everyone. We achieve this using cutting-edge technologies like zero-knowledge proofs to secure your data, AI-driven tools to detect and respond to threats proactively, and blockchain to ensure transparency and decentralization. Whether you're a business looking to protect your employees and subsidize internet costs for your users or an individual seeking private, high-speed internet, Erebrus offers a versatile and secure solution, transforming the way we experience the digital world.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 14, 
+          name: b"walrus-press".to_string(),
+          description: b"WalrusPress is a markdown-centered static site generator. You can write your content (documentations, blogs, etc.) in Markdown, then WalrusPress will help you to generate a static site to host them.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 15, 
+          name: b"Galliun".to_string(),
+          description: b"Galliun is developing  Water Cooler Protocol a minting and distribution protocol for NFT collection launches on Sui along with Flow a Command Line Tool for interfacing with the Water Cooler Protocol.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 16, 
+          name: b"Online Selling Platforms".to_string(),
+          description: b"This website is created to create an e-commerce selling website.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 17, 
+          name: b"Xbuild".to_string(),
+          description: b"storage platform ".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 18, 
+          name: b"Adgraph".to_string(),
+          description: b"AdGraph is an open, decentralized on-chain graph of user preferences.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 19, 
+          name: b"PackMyEvent".to_string(),
+          description: b"PackMyEvent leverages the unique features of the Sui blockchain, such as its innovative data model that treats each digital asset as a truly unique and indivisible entity. This approach ensures that event tickets are secured as non-fungible tokens (NFTs), granting unprecedented ownership and control to users.".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 20, 
+          name: b"Suitizen".to_string(),
+          description: b"Suitizen is an on-chain identity project. Our vision is to create an identity card that is fully supported across the SUI network, granting citizens the rights they should have, such as participating in various on-chain activities like voting.\n\nUsers can purchase the SUI Name Service and then apply for an identity card on the Suitizen website. During the application process, we will scan your facial features and, with some randomness, generate an avatar representing you in the SUI world. This avatar is immutable, just like how you can't change your appearance in the real world. Your facial features, along with the generated avatar, will be encrypted and recorded on Walrus.\n\nTo prevent the abuse of identity issuance, obtaining a Suitizen identity card requires prior purchase of the SUI Name Service and is tied to your facial features.\n\nBecome a Suitizen now!".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 21, 
+          name: b"keybase".to_string(),
+          description: b"KV store on Walrus".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 22, 
+          name: b"Essential DAO ".to_string(),
+          description: b"Providing DAO solutions in the sui ecosystem ".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
+        Project {
+          id: 23, 
+          name: b"Split Conferencing ".to_string(),
+          description: b"Say a team got a page that there application is down and there need to be a medium where everyone can join into one call and split into rooms and seamlessly switch between the rooms.\n\nRooms in the above scenario can be like front end room, backend room, network room and DB room etc\n\nSo everyone can do their own RCA".to_string(),
+          video_blob_id: b"rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM".to_string(),
+          walrus_site_url: url::new_unsafe_from_bytes(b"https://breakingtheice.walrus.site"),
+          votes: 0,
+        },
       ],
       votes: table::new(ctx),
       voting_active: false

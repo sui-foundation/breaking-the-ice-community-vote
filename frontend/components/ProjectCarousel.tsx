@@ -13,13 +13,13 @@ import { USER_ROLES } from "@/constants/USER_ROLES";
 import { useVoteTransaction } from "@/hooks/useVoteTransaction";
 import { toast } from "sonner";
 
-type Project = {
+export type Project = {
   id: number;
   name: string;
-  airTableUrl: string;
   votes: number;
   description: string;
   videoBlobId: string;
+  walrusSiteUrl: string;
 };
 
 export default function ProjectCarousel() {
@@ -59,10 +59,10 @@ export default function ProjectCarousel() {
         return {
           id: parseInt(project.fields.id),
           name: project.fields.name,
-          airTableUrl: project.fields.air_table_url,
           votes: project.fields.votes,
-          description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
-          videoBlobId: "rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM"
+          description: project.fields.description,
+          videoBlobId: project.fields.video_blob_id,
+          walrusSiteUrl: project.fields.walrus_site_url,
         };
       }
     );
@@ -112,11 +112,7 @@ export default function ProjectCarousel() {
             {projects.map((project, index) => (
               <CarouselItem key={index} className="w-full flex flex-col items-center justify-center">
                 <ProjectCard 
-                  id={project.id}
-                  name={project.name}
-                  votes={project.votes}
-                  description={project.description}
-                  videoBlobId={project.videoBlobId}
+                  project={project}
                   onSelect={() => handleSelectProject(project.id)}
                 />
               </CarouselItem>
