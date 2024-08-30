@@ -66,6 +66,10 @@ export default function ProjectCarousel() {
 
   const hanldeSubmitVote = async () => {
 
+    if (selectedProjects.length === 0) {
+      return toast.error("Please select at least one project to vote");
+    }
+
 
     toast.promise(handleExecute(selectedProjects), {
       loading: "Submitting your vote...",
@@ -98,21 +102,17 @@ export default function ProjectCarousel() {
 
   if (isConnected) {
     return (
-      <div className="rounded-xl max-w-[80%] flex flex-col items-center justify-center py-4 gap-2">
-        <Carousel className="w-full ">
-          <CarouselContent>
-            {projects.map((project, index) => (
-              <CarouselItem key={index} className="w-full flex flex-col items-center justify-center">
-                <ProjectCard 
-                  project={project}
-                  onSelect={() => handleSelectProject(project.id)}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" />
-          <CarouselNext  className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" />
-        </Carousel>
+      <div className="rounded-xl w-full flex flex-col items-center justify-center py-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              project={project}
+              odd={index % 2 === 0}
+              onSelect={() => handleSelectProject(project.id)}
+            />
+          ))}
+        </div>
         <div className="flex w-full flex-row items-center justify-between gap-4 px-8">
           <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
             <LogOut className="rotate-180 text-red-500"/>
@@ -126,9 +126,11 @@ export default function ProjectCarousel() {
   }
 
   return (
-    <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
-      Sign in to vote
-    </Button>
+    <div className="rounded-xl w-full flex flex-col items-center justify-center py-4 gap-2">
+      <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
+        View projects
+      </Button>
+    </div>
   )
 }
 

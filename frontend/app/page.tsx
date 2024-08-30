@@ -5,10 +5,11 @@ import Image from "next/image";
 import walrusButton from "@/public/walrusButton.png";
 import ProjectCarousel from "@/components/ProjectCarousel";
 
-
 export default function Page() {
   return (
-    <div className={`w-full flex flex-col items-center ${montreal.className} text-[#F7F7F7]`}>
+    <div
+      className={`w-full flex flex-col items-center ${montreal.className} text-[#F7F7F7]`}
+    >
       <div className="relative w-full px-4 py-1">
         <div className="w-full h-full flex flex-col items-center justify-around top-0 absolute">
           <span
@@ -27,7 +28,11 @@ export default function Page() {
                 Breaking
                 <br /> the Ice
               </span>
-              <Image src={Georgey} alt="georgey" className="w-12 -ml-4 md:w-40 md:-ml-10 lg:h-full lg:w-full" />
+              <Image
+                src={Georgey}
+                alt="georgey"
+                className="w-12 -ml-4 md:w-40 md:-ml-10 lg:h-full lg:w-full"
+              />
             </div>
           </div>
         </div>
@@ -37,130 +42,55 @@ export default function Page() {
           className="object-cover w-full border border-[#99EFE4] border-2 rounded-xl md:max-h-[500px]"
         />
       </div>
-      <div className="w-full px-4 py-4 flex flex-col md:flex-row items-center justify-center gap-4">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
-            <div className="flex flex-col items-center w-full justify-center text-center items-center">
-              <h2
-                className={`z-30 text-3xl md:text-6xl lg:text-8xl text-[#99EFE4] text-center ${neueBitBold.className}`}
-                style={{ lineHeight: ".75" }}
-              >
-                How Voting Works
-              </h2>
-              <span className="z-30 text-left">
-                <ul className="list-disc ps-6 max-w-lg">
-                  <li>
-                    All elligible Breaking the Ice projects are included in the community vote. 
-                  </li>
-                  <li>
-                    The top X (filled in later) projects with the most votes will win $500 and be selected for the peer approval round.
-                  </li>
-                  <li>
-                    Everyone is allowed to partipate in the community vote.
-                  </li>
-                </ul>
-              </span>
-            </div>
-          </div>
-          <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
-            <div className="flex flex-col items-center w-full justify-center text-center text-[#C684F6] items-center">
-              <h2
-                className={`z-30 text-3xl md:text-6xl lg:text-8xl text-[#C684F6] text-center ${neueBitBold.className}`}
-                style={{ lineHeight: ".75" }}
-              >
-                How to Participate
-              </h2>
-              <span className="z-30 text-left">
-                <ul className="list-decimal ps-4 text-[#C684F6] max-w-lg">
-                  <li>
-                    Explore the Breaking the Ice projects.
-                  </li>
-                  <li>Click the checkbox to select a project for voting</li>
-                  <li>You can select as many projects as you like</li>
-                  <li>Click the submit button to submit your vote - you can only submit your votes once</li>
-                </ul>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="rounded-xl w-full md:w-1/2 min-h-[700px] flex flex-col items-center justify-center py-4 gap-2">
-          <ProjectCarousel />
-        </div>
-      </div>
-      {/* <div className="w-full px-4 py-1 flex flex-col lg:flex-row items-center justify-center gap-4">
-        <div className="w-full h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+      <div className="w-full px-4 py-1 flex flex-col lg:flex-row items-center justify-center gap-4">
+        <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
           <div className="flex flex-col items-center w-full justify-center text-center items-center">
             <h2
-              className={`z-30 text-4xl sm:text-8xl text-[#99EFE4] text-center ${neueBitBold.className}`}
+              className={`z-30 text-3xl md:text-6xl lg:text-8xl text-[#99EFE4] text-center ${neueBitBold.className}`}
               style={{ lineHeight: ".75" }}
             >
               How Voting Works
             </h2>
             <span className="z-30 text-left">
-              <ul className="list-disc ps-6">
+              <ul className="list-disc ps-6 max-w-lg">
                 <li>
-                  All elligible Breaking the Ice projects are included in the community vote. 
+                  All elligible Breaking the Ice projects are included in the
+                  community vote.
                 </li>
                 <li>
-                  The top 10 projects with the most votes will be selected for the peer approval round.
+                  The top X (filled in later) projects with the most votes will
+                  win $500 and be selected for the peer approval round.
                 </li>
-                <li>
-                  Everyone is allowed to vote for their favorite projects.
-                </li>
+                <li>Everyone is allowed to partipate in the community vote.</li>
               </ul>
             </span>
           </div>
         </div>
-        <div className="w-full h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+        <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
           <div className="flex flex-col items-center w-full justify-center text-center text-[#C684F6] items-center">
             <h2
-              className={`z-30 text-4xl sm:text-8xl text-[#C684F6] text-center ${neueBitBold.className}`}
+              className={`z-30 text-3xl md:text-6xl lg:text-8xl text-[#C684F6] text-center ${neueBitBold.className}`}
               style={{ lineHeight: ".75" }}
             >
               How to Participate
             </h2>
             <span className="z-30 text-left">
-              <ul className="list-decimal ps-4 text-[#C684F6]">
-                <li>
-                  Explore the Breaking the Ice projects displayed below.
-                </li>
+              <ul className="list-decimal ps-4 text-[#C684F6] max-w-lg">
+                <li>Explore the Breaking the Ice projects.</li>
                 <li>Click the checkbox to select a project for voting</li>
-                <li>You can select up to 3 projects</li>
-                <li>Click the submit button to submit your vote - you can only submit your votes once</li>
+                <li>You can select as many projects as you like</li>
+                <li>
+                  Click the submit button to submit your vote - you can only
+                  submit your votes once
+                </li>
               </ul>
             </span>
           </div>
         </div>
       </div>
       <div className="w-full px-4 py-1">
-        <div className="rounded-xl w-full flex flex-col items-center justify-center py-4 gap-2">
-          <Carousel className="w-full max-w-[90%]">
-            <CarouselContent>
-              {projects.map((project, index) => (
-                <CarouselItem key={index} className="w-full flex flex-col items-center justify-center">
-                  <ProjectCard 
-                    id={project.id}
-                    name={project.name}
-                    votes={project.votes}
-                    description={project.description}
-                    videoBlobId={project.videoBlobId}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] hover:bg-[#4C4F5D]" />
-            <CarouselNext  className="rounded-lg text-[#99EFE4] border-[#99EFE4] bg-[#0C0F1D] hover:bg-[#4C4F5D]" />
-          </Carousel>
-          <div className="flex w-full flex-row items-center justify-center gap-4 px-8">
-            <Button variant={"ghost"} size={"icon"}>
-              <LogOut className="rotate-180"/>
-            </Button>
-            <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4]">
-              Submit Vote
-            </Button>
-          </div>
-        </div>
-      </div> */}
+        <ProjectCarousel />
+      </div>
       <div className="w-full px-4 py-1">
         <div className="w-full rounded-xl border border-2 border-[#99EFE4] bg-[#0C0F1D] h-48 flex flex-row items-center justify-between p-4 text-[#C684F6]">
           <div className="flex flex-col items-start justify-between h-full">
@@ -197,6 +127,5 @@ export default function Page() {
         </div>
       </div>
     </div>
-  )
-  
+  );
 }

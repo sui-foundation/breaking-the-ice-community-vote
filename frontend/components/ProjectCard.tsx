@@ -6,14 +6,19 @@ import { Project } from "@/types/Project";
 
 export default function ProjectCard({
   project,
+  odd,
   onSelect
 }: {
   project: Project;
+  odd: boolean;
   onSelect: () => void;
 }) {
 
   return (
-    <div key={project.id} className="flex flex-col items-center justify-between bg-[#F7F7F7] text-[#0C0F1D] rounded-xl h-[600px] max-w-[450px] px-4 py-4 gap-6">
+    <div key={project.id} className={
+      "flex flex-col items-center justify-between bg-[#0C0F1D] text-[#F7F7F7] rounded-xl h-[415px] max-w-[450px] px-4 py-4 gap-6" + 
+      (odd ? " border border-[#99EFE4] border-2" : " border border-[#C684F6] border-2")
+    }>
       <video width="320" height="320" controls className="border rounded-xl border-[#0C0F1D] border-4">
         <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`}/>
       </video>
@@ -22,12 +27,12 @@ export default function ProjectCard({
           <span>{project.name}</span>
           <a href={project.walrusSiteUrl} target="_blank"><SquareArrowOutUpRight className="w-4 transform hover:scale-110 transition-transform text-[#C684F6]" /></a>
         </div>
-        <span className={`text-sm md:text-xl ${montreal.className} px-8 max-h-[175px] md:max-h-[275px] overflow-y-auto`}>
+        <span className={`text-sm ${montreal.className} px-4 max-h-[100px] overflow-y-auto`}>
           {project.description}
         </span>
       </div>
       <div className="flex flex-row items-center justify-start gap-2">
-        <Checkbox onClick={onSelect} />
+        <Checkbox className="border-[#F7F7F7]" onClick={onSelect} />
         <span>
           Select
         </span>
