@@ -22,7 +22,7 @@ export default function ProjectCard({
           <span>{project.name}</span>
           <a href={project.walrusSiteUrl} target="_blank"><SquareArrowOutUpRight className="w-4 transform hover:scale-110 transition-transform text-[#C684F6]" /></a>
         </div>
-        <span className={`text-sm md:text-xl ${montreal.className} px-8 max-h-[275px] overflow-y-auto`}>
+        <span className={`text-sm md:text-xl ${montreal.className} px-8 max-h-[175px] md:max-h-[275px] overflow-y-auto`}>
           {project.description}
         </span>
       </div>
