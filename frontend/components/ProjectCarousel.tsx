@@ -7,17 +7,14 @@ import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ConnectModal, useSuiClient } from "@mysten/dapp-kit";
+import { useSuiClient } from "@mysten/dapp-kit";
 import clientConfig from "@/config/clientConfig";
 import { USER_ROLES } from "@/constants/USER_ROLES";
 import { useVoteTransaction } from "@/hooks/useVoteTransaction";
 import { toast } from "sonner";
 import { Project } from "@/types/Project";
-import { mondwest, neueBitBold } from "@/lib/fonts";
 
 export default function ProjectCarousel() {
-
-  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
 
   const { isConnected, logout, redirectToAuthUrl } = useCustomWallet();
 
@@ -129,11 +126,9 @@ export default function ProjectCarousel() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
-        Sign in with Google
-      </Button>
-    </div>
+    <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
+      Sign in to vote
+    </Button>
   )
 }
 
