@@ -12,15 +12,7 @@ import clientConfig from "@/config/clientConfig";
 import { USER_ROLES } from "@/constants/USER_ROLES";
 import { useVoteTransaction } from "@/hooks/useVoteTransaction";
 import { toast } from "sonner";
-
-export type Project = {
-  id: number;
-  name: string;
-  votes: number;
-  description: string;
-  videoBlobId: string;
-  walrusSiteUrl: string;
-};
+import { Project } from "@/types/Project";
 
 export default function ProjectCarousel() {
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { AuthenticationProvider } from "@/contexts/Authentication";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { ChildrenProps } from "@/types/ChildrenProps";
 import React from "react";
 import { EnokiFlowProvider } from "@mysten/enoki/react";
@@ -36,10 +35,9 @@ const sessionStorageAdapter: StorageAdapter = {
   },
 };
 
-registerStashedWallet("PoC template", {});
+registerStashedWallet("Breaking the Ice - Community Vote", {});
 
 export const ProvidersAndLayout = ({ children }: ChildrenProps) => {
-  const { isMobile } = useIsMobile();
 
   const { networkConfig } = createNetworkConfig({
     testnet: { url: getFullnodeUrl("testnet") },
@@ -66,7 +64,7 @@ export const ProvidersAndLayout = ({ children }: ChildrenProps) => {
               <CustomWalletProvider>
                 <main>
                   {children}
-                  <Toaster closeButton  />
+                  <Toaster />
                 </main>
               </CustomWalletProvider>
             </AuthenticationProvider>

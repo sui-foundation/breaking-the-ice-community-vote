@@ -1,7 +1,7 @@
 import { montreal, neueBitBold } from "@/lib/fonts";
 import { Checkbox } from "./ui/checkbox";
-import { Project } from "./ProjectCarousel";
 import { SquareArrowOutUpRight } from "lucide-react";
+import { Project } from "@/types/Project";
 
 
 export default function ProjectCard({
