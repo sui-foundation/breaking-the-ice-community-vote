@@ -55,7 +55,7 @@ export const ProvidersAndLayout = ({ children }: ChildrenProps) => {
         <WalletProvider
           autoConnect
           stashedWallet={{
-            name: "PoC Template",
+            name: "Breaking the Ice - Community Vote",
           }}
           storage={sessionStorageAdapter}
         >
