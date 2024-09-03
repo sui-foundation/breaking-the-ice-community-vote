@@ -6,22 +6,64 @@ module voting::voting {
   use sui::vec_map;
   use sui::url;
   use sui::zklogin_verified_issuer::check_zklogin_issuer;
+  use sui::vec_set::{Self,VecSet};
+  use std::type_name::{Self, TypeName};
 
   const EInvalidProof: u64 = 1;
   const EUserAlreadyVoted: u64 = 2;
-  const ETooManyVotes: u64 = 3;
   const EInvalidProjectId: u64 = 4;
   const EVotingInactive: u64 = 5;
+  const ENotInWhitelist: u64 = 6;
 
   public struct Votes has key {
     id: UID, 
     total_votes: u64, 
-    project_list: vector<Project>,
-    votes: table::Table<address, vector<u64>>,
-    voting_active: bool
+    project_list: table::Table<u64, Project>,
+    ballots: table::Table<address, vector<u64>>,
+    voting_active: bool,
+    whitelist_tokens: VecSet<TypeName>,
   }
 
-  public struct Project has store {
+  public(package) fun project_list(self: &Votes, i: u64): Project {
+    return self.project_list[i]
+  }
+
+  public(package) fun append_project_list(self: &mut Votes, p: Project) {
+    self.project_list.add(p.id, p);
+  }
+
+  public(package) fun share_votes(self: Votes) {
+    transfer::share_object(self);
+  }
+
+  public fun total_votes(self: &Votes): u64 {
+    self.total_votes
+  }
+
+  public fun ballots(self: &Votes, user: address): vector<u64> {
+    *self.ballots.borrow(user)
+  }
+
+  public(package) fun new_votes<T>(
+    total_votes: u64,
+    project_list: table::Table<u64, Project>,
+    ballots: table::Table<address, vector<u64>>,
+    voting_active: bool,
+    ctx: &mut TxContext
+  ): Votes {
+    let tn = type_name::get<T>();
+    return Votes {
+      id: object::new(ctx),
+      total_votes,
+      project_list,
+      // project_ids: vec_set::from_keys(project_list.map!(|p| p.id)),
+      ballots,
+      voting_active: voting_active,
+      whitelist_tokens: vec_set::singleton(tn),
+    }
+  }
+
+  public struct Project has store, copy, drop {
     id: u64,
     name: string::String, 
     description: string::String, 
@@ -29,6 +71,10 @@ module voting::voting {
     walrus_site_url: url::Url, 
     github_url: url::Url,
     votes: u64
+  }
+
+  public fun project_votes(self: &Project): u64 {
+    self.votes
   }
 
   public struct AdminCap has key, store {
@@ -520,12 +566,12 @@ module voting::voting {
       ],
     ];
 
-    let mut project_list = vector[];
+    let mut project_list = table::new(ctx);
 
     let mut index = 0;
 
     while (index < projects.length()) {
-      project_list.push_back(Project {
+      project_list.add(index, Project {
         id: index, 
         votes: 0, 
         name: projects[index][0].to_string(), 
@@ -542,8 +588,9 @@ module voting::voting {
       id: object::new(ctx),
       total_votes: 0, 
       project_list,
-      votes: table::new(ctx),
-      voting_active: false
+      ballots: table::new(ctx),
+      voting_active: false,
+      whitelist_tokens: vec_set::empty()
     };
     transfer::share_object(votes);
 
@@ -554,9 +601,8 @@ module voting::voting {
       ctx.sender()
     );
   }
-
+  
   public fun vote(project_ids: vector<u64>, votes: &mut Votes, address_seed: u256, ctx: &TxContext) {
-
     let voter = ctx.sender();
 
     assert_user_has_not_voted(voter, votes);
@@ -565,58 +611,72 @@ module voting::voting {
     assert_voting_is_active(votes);
 
     // Update project's vote
-    let mut curr_index = 0;
-    while (curr_index < project_ids.length()) {
-      let project = &mut votes.project_list[project_ids[curr_index]];
-      project.votes = project.votes + 1;
-
-      // Increment total votes
-      votes.total_votes = votes.total_votes + 1;
-
-      curr_index = curr_index + 1;
-    };
+    vote_internal(votes, project_ids, ctx);
 
     // Record user's vote
     table::add(
-      &mut votes.votes, 
+      &mut votes.ballots, 
       voter, 
       project_ids
     );
+  }
+
+  public(package) fun vote_internal(votes: &mut Votes, ballot: vector<u64>, ctx: &TxContext) {
+    let voter = ctx.sender();
+    let already_voted = votes.ballots.contains(voter);
+    // Clean up old ballot
+    if (already_voted) {
+      let og_ballot = votes.ballots[voter];
+      og_ballot.do!(|v| {
+        let p = &mut votes.project_list[v];
+        p.votes = p.votes - 1;
+        votes.total_votes = votes.total_votes - 1;
+      });
+      votes.ballots.remove(voter);
+    };
+    // add new ballot
+    votes.ballots.add(voter, ballot);
+    ballot.do!(|v| {
+      let p = &mut votes.project_list[v];
+      p.votes = p.votes + 1;
+      votes.total_votes = votes.total_votes + 1;
+    });
   }
 
   public entry fun toggle_voting(_: &AdminCap, can_vote: bool, votes: &mut Votes) {
     votes.voting_active = can_vote;
   }
 
+  public(package) fun assert_token_in_whitelist<T>(_: &T, votes: &Votes) {
+    let tn = type_name::get<T>();
+    assert!(
+      votes.whitelist_tokens.contains(&tn), 
+      ENotInWhitelist
+    );
+  }
+
   fun assert_user_has_not_voted(user: address, votes: &Votes) {
     assert!(
       table::contains(
-        &votes.votes, 
+        &votes.ballots, 
         user
       ) == false, 
       EUserAlreadyVoted
     );
   }
 
-  fun assert_valid_project_ids(project_ids: vector<u64>, votes: &Votes) {
-    // assert!(
-    //   project_ids.length() <= 3, 
-    //   ETooManyVotes
-    // );
-    
-    let mut curr_index = 0;
+  public(package) fun assert_valid_project_ids(project_ids: vector<u64>, votes: &Votes) {
     let mut ids = vec_map::empty();
-    while (curr_index < project_ids.length()) {
+    project_ids.do!(|id| {
       assert!(
-        project_ids[curr_index] < votes.project_list.length(),
-        EInvalidProjectId
+          votes.project_list.contains(id),
+          EInvalidProjectId
       );
-      vec_map::insert(&mut ids, project_ids[curr_index], 0); // this will abort if there is a dup
-      curr_index = curr_index + 1;
-    };
+      vec_map::insert(&mut ids, id, 0); // this will abort if there is a dup
+    });
   }
 
-  fun assert_voting_is_active(votes: &Votes) {
+  public(package) fun assert_voting_is_active(votes: &Votes) {
     assert!(
       votes.voting_active, 
       EVotingInactive
@@ -627,5 +687,10 @@ module voting::voting {
     let sender = ctx.sender();
     let issuer = string::utf8(b"https://accounts.google.com");
     assert!(check_zklogin_issuer(sender, address_seed, &issuer), EInvalidProof);
+  }
+
+  #[test_only]
+  public fun init_for_test(ctx: &mut TxContext) {
+    init(ctx);
   }
 }
