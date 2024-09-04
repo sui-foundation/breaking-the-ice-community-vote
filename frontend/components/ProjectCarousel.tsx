@@ -14,6 +14,16 @@ import { useVoteTransaction } from "@/hooks/useVoteTransaction";
 import { toast } from "sonner";
 import { Project } from "@/types/Project";
 
+const dummyBlobIds = [
+  "rvtweti0wlA0OeIO_Vi2sdvqV29zLDfO63Lo-sFevVM", 
+  "bzIFot9GyP8IxLug2FlkXgrxxS91AU7_Rzi2e3MofQo",
+  "NwyyoHnb2AkAv1ilNN5tMKcOqL2ySNoNxCeY9BpqYOE",
+  "qO68LYAmuCh0YRcCtUn-RW62uoLnF4aGbT6CLBjk-oc",
+  "t18ETNN6UAi1RQkAo6eBWAC_b0uHsDOjJ9pp-VUAST4",
+  "msK2vUYMlawnTwlfV52_EEzIiFp9VvFCHxJFwC85Ctg",
+  "gRGCJNRPP6kyK5B0UzD6Cp5HoE0_TJRtUePzMb9f-ZY",
+]
+
 export default function ProjectCarousel() {
 
   const { isConnected, logout, redirectToAuthUrl } = useCustomWallet();
@@ -53,7 +63,7 @@ export default function ProjectCarousel() {
           name: project.fields.name,
           votes: project.fields.votes,
           description: project.fields.description,
-          videoBlobId: project.fields.video_blob_id,
+          videoBlobId: dummyBlobIds[Math.floor(Math.random() * dummyBlobIds.length)],
           walrusSiteUrl: project.fields.walrus_site_url,
         };
       }
