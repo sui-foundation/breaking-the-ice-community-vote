@@ -112,7 +112,7 @@ export default function ProjectCarousel() {
 
   if (isConnected) {
     return (
-      <div className="rounded-xl w-full flex flex-col items-center justify-center py-4 gap-4">
+      <div className="relative rounded-xl w-full flex flex-col items-center justify-center py-4 gap-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {projects.map((project, index) => (
             <ProjectCard
@@ -123,7 +123,7 @@ export default function ProjectCarousel() {
             />
           ))}
         </div>
-        <div className="flex w-full flex-row items-center justify-between gap-4 px-8">
+        <div className="sticky bg-[#0C0F1D] border-2 border-[#F7F7F7] rounded-xl bottom-2 flex w-full flex-row items-center justify-between gap-4 py-4 px-4">
           <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
             <LogOut className="rotate-180 text-red-500"/>
           </Button>
