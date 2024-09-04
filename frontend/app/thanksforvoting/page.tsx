@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import FUD from "@/public/plotting.webp";
+import Georgey from "@/public/Breakingtheice_voting.png";
 import ShareButton from "./ShareButton";
 import { use, useEffect, useState } from "react";
 import { mondwest, montreal } from "@/lib/fonts";
@@ -30,8 +30,8 @@ export default function Page() {
 
       <Image
         className="rounded-2xl"
-        src={FUD}
-        alt="FUD"
+        src={Georgey}
+        alt="Georgey"
         width={300}
         height={300}
       />
