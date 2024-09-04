@@ -64,7 +64,7 @@ export const ProvidersAndLayout = ({ children }: ChildrenProps) => {
               <CustomWalletProvider>
                 <main>
                   {children}
-                  <Toaster />
+                  <Toaster duration={2000} />
                 </main>
               </CustomWalletProvider>
             </AuthenticationProvider>
