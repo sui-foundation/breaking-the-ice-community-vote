@@ -16,7 +16,7 @@ export default function ProjectCard({
 
   return (
     <div key={project.id} className={
-      "flex flex-col items-center justify-between bg-[#0C0F1D] text-[#F7F7F7] rounded-xl h-[415px] max-w-[450px] px-4 py-4 gap-6" + 
+      "flex flex-col items-center justify-between bg-[#0C0F1D] text-[#F7F7F7] rounded-xl min-h-[415px] max-w-[450px] px-4 py-4 gap-6" + 
       (odd ? " border border-[#99EFE4] border-2" : " border border-[#C684F6] border-2")
     }>
       <video controls className="border rounded-xl border-[#0C0F1D] border-4 max-h-xs" >
