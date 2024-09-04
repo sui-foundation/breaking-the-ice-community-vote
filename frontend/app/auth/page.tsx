@@ -8,11 +8,7 @@ export default function Page() {
 
   const { handled } = useAuthCallback(); // This hook will handle the callback from the authentication provider
 
-  useEffect(() => {
-    if (handled) {
-     window.location.href = "/";
-    }
-}, [handled]);
+  useEffect(() => {}, [handled]);
 
   return (
     <Loading />

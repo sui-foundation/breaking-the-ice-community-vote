@@ -88,7 +88,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="w-full px-4 py-1">
+      <div id="projects" className="w-full px-4 py-1">
         <ProjectCarousel />
       </div>
       <div className="w-full px-4 py-1">
