@@ -20,7 +20,7 @@ export default function ProjectCard({
       (odd ? " border border-[#99EFE4] border-2" : " border border-[#C684F6] border-2")
     }>
       <div className="h-[250px] w-full flex flex-col items-center justify-center">
-        <video controls poster="placeholder" className="border rounded-xl border-[#0C0F1D] border-4 max-h-[250px]" >
+        <video controls poster="https://aggregator-devnet.walrus.space/v1/HZWhXCiuVANvQuPD2Oa0AoWKvJ052Vnl4T6oLlNPstQ" className="border rounded-xl border-[#0C0F1D] border-4 max-h-[250px]" >
           <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`}/>
         </video>
       </div>
