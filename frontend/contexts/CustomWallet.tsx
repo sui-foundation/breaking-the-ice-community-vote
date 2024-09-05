@@ -129,7 +129,7 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
   const getAddressSeed = async (): Promise<string> => {
     if (isUsingEnoki) {
       const { addressSeed } = await enokiFlow.getProof({
-        network: "testnet",
+        network: clientConfig.SUI_NETWORK_NAME,
       });
       return addressSeed;
     }

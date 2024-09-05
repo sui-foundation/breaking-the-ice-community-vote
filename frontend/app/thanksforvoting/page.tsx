@@ -5,6 +5,7 @@ import Georgey from "@/public/Breakingtheice_voting.png";
 import ShareButton from "./ShareButton";
 import { use, useEffect, useState } from "react";
 import { mondwest, montreal } from "@/lib/fonts";
+import clientConfig from "@/config/clientConfig";
 
 export default function Page() {
 
@@ -24,7 +25,7 @@ export default function Page() {
           Thanks for voting!
         </h1>
         <p className="text-lg  text-center">
-          Your vote has been <a href={`https://suiscan.xyz/testnet/tx/${txnDigest}`} target="_blank" className={`underline text-[#99EFE4] after:content-['_↗']`}>recorded</a>. We&apos;ll announce the winners soon!
+          Your vote has been <a href={`https://suiscan.xyz/${clientConfig.SUI_NETWORK_NAME}/tx/${txnDigest}`} target="_blank" className={`underline text-[#99EFE4] after:content-['_↗']`}>recorded</a>. We&apos;ll announce the winners soon!
         </p>
       </div>
 
