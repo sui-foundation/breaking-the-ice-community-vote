@@ -43,10 +43,10 @@ export default function Page() {
         />
       </div>
       <div className="w-full px-4 py-1 flex flex-col lg:flex-row items-center justify-center gap-4">
-        <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+        <div className="w-full py-2 px-4 text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
           <div className="flex flex-col items-center w-full justify-center text-center items-center">
             <h2
-              className={`z-30 text-3xl md:text-6xl lg:text-8xl text-[#99EFE4] text-center ${neueBitBold.className}`}
+              className={`z-30 text-3xl md:text-5xl lg:text-7xl text-[#99EFE4] text-center ${neueBitBold.className}`}
               style={{ lineHeight: ".75" }}
             >
               How Voting Works
@@ -66,10 +66,10 @@ export default function Page() {
             </span>
           </div>
         </div>
-        <div className="w-full px-4 h-[200px] sm:h-[300px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+        <div className="w-full py-2 px-4 text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
           <div className="flex flex-col items-center w-full justify-center text-center text-[#C684F6] items-center">
             <h2
-              className={`z-30 text-3xl md:text-6xl lg:text-8xl text-[#C684F6] text-center ${neueBitBold.className}`}
+              className={`z-30 text-3xl md:text-5xl lg:text-7xl text-[#C684F6] text-center ${neueBitBold.className}`}
               style={{ lineHeight: ".75" }}
             >
               How to Participate
