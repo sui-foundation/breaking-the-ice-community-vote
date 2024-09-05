@@ -88,7 +88,7 @@ export default function ProjectCarousel() {
         localStorage.setItem(
           "votedProjects",
           selectedProjects
-            .map((projectId) => projects[projectId].name)
+            .map((projectId) => projects.find((project) => project.id === projectId)?.name || "")
             .join(";;")
         );
 
