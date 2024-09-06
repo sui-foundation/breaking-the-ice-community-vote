@@ -10,8 +10,8 @@ export default function Page() {
     <div
       className={`w-full flex flex-col items-center ${montreal.className} text-[#F7F7F7]`}
     >
-      <div className="relative w-full px-4 py-1">
-        <div className="w-full h-full flex flex-col items-center justify-around top-0 absolute">
+      <div className="relative w-full px-4 py-1 overflow-hidden">
+        <div className="w-full h-full flex flex-col items-center justify-around left-0 top-0 absolute">
           <span
             className={`scroll-m-20 text-xl md:text-5xl font-extrabold tracking-tight ${neueBitBold.className}`}
           >

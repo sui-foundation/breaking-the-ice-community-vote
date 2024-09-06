@@ -124,7 +124,7 @@ export default function ProjectCarousel() {
             />
           ))}
         </div>
-        <div className="sticky bg-[#0C0F1D] border-2 border-[#F7F7F7] rounded-xl bottom-2 flex w-full flex-row items-center justify-between gap-4 py-4 px-4">
+        <div className="sticky bg-[#0C0F1D] border-2 border-[#F7F7F7] rounded-xl bottom-2 flex w-full flex-row items-center justify-between gap-1 py-4 px-4">
           <div className="flex flex-row items-center">
             <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
               <LogOut className="rotate-180 text-red-500"/>
