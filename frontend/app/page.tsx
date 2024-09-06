@@ -43,8 +43,8 @@ export default function Page() {
         />
       </div>
       <div className="w-full px-4 py-1 flex flex-col lg:flex-row items-center stretch gap-4">
-        <div className="w-full py-2 px-4 lg:h-[250px] text-[#99EFE4] bg-[#C684F6] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
-          <div className="flex flex-col items-center w-full justify-center text-center items-center">
+        <div className="w-full py-2 px-4 lg:h-[220px] xl:h-[200px] text-[#99EFE4] bg-[#0C0F1D] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center h-full w-full ">
             <h2
               className={`z-30 text-3xl md:text-5xl lg:text-7xl text-[#99EFE4] text-center ${neueBitBold.className}`}
               style={{ lineHeight: ".75" }}
@@ -54,19 +54,19 @@ export default function Page() {
             <span className="z-30 text-left">
               <ul className="list-disc ps-6 max-w-lg">
                 <li>
-                  All eligible Breaking the Ice hackathon projects are included in the community vote.
+                  All eligible hackathon projects are included in the community vote.
                 </li>
                 <li>
-                  The top X (filled in later) projects with the most votes will receive $500 and then enter the peer approval round, which determines the final winners of the hackathon.
+                  The # projects with the most votes will receive $500 and move on to the peer approval round that determines the final winners of the hackathon.
                 </li>
                 <li>
-                  Anyone is allowed to vote for their favorite projects in the community voting process!
+                  Anyone can vote!
                 </li>
               </ul>
             </span>
           </div>
         </div>
-        <div className="w-full py-2 px-4 lg:h-[250px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-start">
+        <div className="w-full py-2 px-4 lg:h-[220px] xl:h-[200px] text-[#C684F6] bg-[#0C0F1D] items-center relative rounded-xl border border-2 border-[#C684F6] overflow-hidden flex flex-col items-center justify-start">
           <div className="flex flex-col items-center w-full justify-start text-center text-[#C684F6]">
             <h2
               className={`z-30 text-3xl md:text-5xl lg:text-7xl text-[#C684F6] text-center ${neueBitBold.className}`}
@@ -76,10 +76,10 @@ export default function Page() {
             </h2>
             <span className="z-30 text-left">
               <ul className="list-decimal ps-4 text-[#C684F6] max-w-lg">
-                <li>View and explore Breaking the Ice hackathon projects below.</li>
-                <li>Click the checkbox to select the project you’re voting for – you can select as many projects as you like.</li>
+                <li>Explore the projects.</li>
+                <li>Tap the checkbox under the project to vote for it. You can vote for as many projects as you like.</li>
                 <li>
-                  Submit your votes. Please note, you can only submit votes once.
+                  Submit your votes. You can only submit votes once.
                 </li>
               </ul>
             </span>
