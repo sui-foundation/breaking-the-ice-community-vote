@@ -14,6 +14,7 @@ import { fromB64, toB64 } from "@mysten/sui/utils";
 import axios, { AxiosResponse } from "axios";
 import { useAuthentication } from "./Authentication";
 import { UserRole } from "@/types/Authentication";
+import { jwtDecode } from "jwt-decode";
 
 export interface CreateSponsoredTransactionApiResponse {
   bytes: string;
@@ -43,6 +44,7 @@ interface CustomWalletContextProps {
   isUsingEnoki: boolean;
   address?: string;
   jwt?: string;
+  emailAddress: string | null;
   getAddressSeed: () => Promise<string>;
   sponsorAndExecuteTransactionBlock: (
     props: SponsorAndExecuteTransactionBlockProps
@@ -64,6 +66,7 @@ export const CustomWalletContext = createContext<CustomWalletContextProps>({
   isUsingEnoki: false,
   address: undefined,
   jwt: undefined,
+  emailAddress: null,
   getAddressSeed: async () => "",
   sponsorAndExecuteTransactionBlock: async () => {
     throw new Error("Not implemented");
@@ -85,6 +88,8 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
   const { isConnected: isWalletConnected } = useCurrentWallet();
   const { mutateAsync: signTransactionBlock } = useSignTransaction();
   const { mutate: disconnect } = useDisconnectWallet();
+
+  const [emailAddress, setEmailAddress] = useState<string | null>(null);
 
   const { isConnected, isUsingEnoki, address, logout } = useMemo(() => {
     return {
@@ -111,8 +116,13 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
   useEffect(() => {
     console.log('isWalletConnected', isWalletConnected)
     console.log('isConnected', isConnected)
-    if (isConnected) {
-      console.log(sessionStorage.getItem("userRole"));
+    console.log('zkLoginSession', zkLoginSession)
+    if (isConnected && zkLoginSession && zkLoginSession.jwt) {
+      const token = zkLoginSession.jwt;
+      const decoded = jwtDecode(token);
+
+      setEmailAddress((decoded as any).email);
+
       handleLoginAs({
         firstName: "Wallet",
         lastName: "User",
@@ -120,11 +130,11 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
           sessionStorage.getItem("userRole") !== "null"
             ? (sessionStorage.getItem("userRole") as UserRole)
             : "anonymous",
-        email: "",
+        email: (decoded as any).email,
         picture: "",
-      });
+      });  
     }
-  }, [isConnected, isWalletConnected, handleLoginAs]);
+  }, [isConnected, isWalletConnected, handleLoginAs, zkLoginSession]);
 
   const getAddressSeed = async (): Promise<string> => {
     if (isUsingEnoki) {
@@ -149,7 +159,7 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
         clientId: clientConfig.GOOGLE_CLIENT_ID,
         redirectUrl: customRedirectUri,
         extraParams: {
-          scope: ["openid", "email", "profile"],
+          scope: ["openid", "email", "profile",],
         },
       })
       .then((url) => {
@@ -269,6 +279,7 @@ export default function CustomWalletProvider({children}: {children: React.ReactN
         isUsingEnoki,
         address,
         jwt: zkLoginSession?.jwt,
+        emailAddress,
         sponsorAndExecuteTransactionBlock,
         executeTransactionBlockWithoutSponsorship,
         logout,

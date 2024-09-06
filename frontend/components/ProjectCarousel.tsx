@@ -26,7 +26,7 @@ const dummyBlobIds = [
 
 export default function ProjectCarousel() {
 
-  const { isConnected, logout, redirectToAuthUrl } = useCustomWallet();
+  const { isConnected, logout, redirectToAuthUrl, emailAddress } = useCustomWallet();
 
   const client = useSuiClient();
 
@@ -124,9 +124,15 @@ export default function ProjectCarousel() {
           ))}
         </div>
         <div className="sticky bg-[#0C0F1D] border-2 border-[#F7F7F7] rounded-xl bottom-2 flex w-full flex-row items-center justify-between gap-4 py-4 px-4">
-          <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
-            <LogOut className="rotate-180 text-red-500"/>
-          </Button>
+          <div className="flex flex-row items-center">
+            <Button variant={"ghost"} size={"icon"} onClick={logout} className="transform hover:scale-110 transition-transform hover:bg-none">
+              <LogOut className="rotate-180 text-red-500"/>
+            </Button>
+            {
+              emailAddress && 
+              <span className="text-[#99EFE4]">{emailAddress}</span>
+            }
+          </div>
           <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={hanldeSubmitVote}>
             Submit Vote
           </Button>
