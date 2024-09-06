@@ -119,6 +119,7 @@ export default function ProjectCarousel() {
               key={index}
               project={project}
               odd={index % 2 === 0}
+              selected={selectedProjects.includes(project.id)}
               onSelect={() => handleSelectProject(project.id)}
             />
           ))}

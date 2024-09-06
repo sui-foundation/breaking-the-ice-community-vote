@@ -7,17 +7,20 @@ import { Project } from "@/types/Project";
 export default function ProjectCard({
   project,
   odd,
-  onSelect
+  selected,
+  onSelect, 
 }: {
   project: Project;
   odd: boolean;
+  selected: boolean;
   onSelect: () => void;
 }) {
 
   return (
     <div key={project.id} className={
-      "flex flex-col items-center justify-between bg-[#0C0F1D] text-[#F7F7F7] rounded-xl min-h-[415px] max-w-[450px] px-4 py-4 gap-6" + 
-      (odd ? " border border-[#99EFE4] border-2" : " border border-[#C684F6] border-2")
+      "flex flex-col items-center justify-between text-[#F7F7F7] rounded-xl min-h-[415px] max-w-[450px] px-4 py-4 gap-6" + 
+      (odd ? " border border-[#99EFE4] border-2" : " border border-[#C684F6] border-2") + 
+      (selected ? " bg-[#2C2F3D]" : " bg-[#0C0F1D]")
     }>
       <div className="h-[250px] w-full flex flex-col items-center justify-center">
         <video controls poster="https://aggregator-devnet.walrus.space/v1/HZWhXCiuVANvQuPD2Oa0AoWKvJ052Vnl4T6oLlNPstQ" className="border rounded-xl border-[#0C0F1D] border-4 max-h-[250px]" >
