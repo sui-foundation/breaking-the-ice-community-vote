@@ -66,7 +66,7 @@ export default function Page() {
             </span>
           </div>
         </div>
-        <div className="w-full py-2 px-4 lg:h-[250px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-center">
+        <div className="w-full py-2 px-4 lg:h-[250px] text-[#99EFE4] bg-[#99EFE4] items-center relative rounded-xl border border-2 border-[#99EFE4] overflow-hidden flex flex-col items-center justify-start">
           <div className="flex flex-col items-center w-full justify-start text-center text-[#C684F6]">
             <h2
               className={`z-30 text-3xl md:text-5xl lg:text-7xl text-[#C684F6] text-center ${neueBitBold.className}`}
