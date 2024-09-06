@@ -131,7 +131,7 @@ export default function ProjectCarousel() {
             </Button>
             {
               emailAddress && 
-              <span className="text-[#99EFE4]">{emailAddress}</span>
+              <span className="text-[#99EFE4] overflow-hidden truncate max-w-[100px]">{emailAddress}</span>
             }
           </div>
           <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] bg-[#99EFE4] text-[#0C0F1D]" onClick={hanldeSubmitVote}>
