@@ -133,7 +133,7 @@ export default function ProjectCarousel() {
               <span className="text-[#99EFE4]">{emailAddress}</span>
             }
           </div>
-          <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={hanldeSubmitVote}>
+          <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] bg-[#99EFE4] text-[#0C0F1D]" onClick={hanldeSubmitVote}>
             Submit Vote
           </Button>
         </div>
@@ -143,7 +143,7 @@ export default function ProjectCarousel() {
 
   return (
     <div className="rounded-xl w-full flex flex-col items-center justify-center py-4 gap-2">
-      <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] hover:text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
+      <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] bg-[#99EFE4] text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
         View projects
       </Button>
     </div>
