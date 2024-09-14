@@ -2,7 +2,7 @@
 
 [move]
 version = 2
-manifest_digest = "14376F9398C277E8DB7B7F5D5C494149BCA7FB5077E7151787DE7D0D1B548258"
+manifest_digest = "D515FEFF9B9E2C17086DEB9872BB4BDA6F22A82763B9103122321F31260B4C47"
 deps_digest = "F8BBB0CCB2491CA29A3DF03D6F92277A4F3574266507ACD77214D37ECA3F3082"
 dependencies = [
   { name = "Sui" },
@@ -10,18 +10,18 @@ dependencies = [
 
 [[move.package]]
 name = "MoveStdlib"
-source = { git = "https://github.com/MystenLabs/sui.git", rev = "framework/testnet", subdir = "crates/sui-framework/packages/move-stdlib" }
+source = { git = "https://github.com/MystenLabs/sui.git", rev = "framework/mainnet", subdir = "crates/sui-framework/packages/move-stdlib" }
 
 [[move.package]]
 name = "Sui"
-source = { git = "https://github.com/MystenLabs/sui.git", rev = "framework/testnet", subdir = "crates/sui-framework/packages/sui-framework" }
+source = { git = "https://github.com/MystenLabs/sui.git", rev = "framework/mainnet", subdir = "crates/sui-framework/packages/sui-framework" }
 
 dependencies = [
   { name = "MoveStdlib" },
 ]
 
 [move.toolchain-version]
-compiler-version = "1.30.3"
+compiler-version = "1.33.0"
 edition = "2024.beta"
 flavor = "sui"
 
@@ -29,12 +29,12 @@ flavor = "sui"
 
 [env.testnet]
 chain-id = "4c78adac"
-original-published-id = "0x99d3416ac0fb06a961dff7994b6bdcebd0a3079bda195c0989857d2f8d333f99"
-latest-published-id = "0x99d3416ac0fb06a961dff7994b6bdcebd0a3079bda195c0989857d2f8d333f99"
+original-published-id = "0x70643e2717be36f9ee5e1146b89ed9e8dc33d8521926415440bee2dbedadc6c3"
+latest-published-id = "0x70643e2717be36f9ee5e1146b89ed9e8dc33d8521926415440bee2dbedadc6c3"
 published-version = "1"
 
 [env.mainnet]
 chain-id = "35834a8a"
-original-published-id = "0x9b64d602663ff25bdf985b6f4124372afbab0bd96b0679756c1bb425d24408ee"
-latest-published-id = "0x9b64d602663ff25bdf985b6f4124372afbab0bd96b0679756c1bb425d24408ee"
+original-published-id = "0x97077c74e70cbc90408950f61aa13a7b2a2b066ebbc7dce261161cdfac392663"
+latest-published-id = "0x97077c74e70cbc90408950f61aa13a7b2a2b066ebbc7dce261161cdfac392663"
 published-version = "1"

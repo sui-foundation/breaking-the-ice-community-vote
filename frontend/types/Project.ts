@@ -4,5 +4,6 @@ export type Project = {
   votes: number;
   description: string;
   videoBlobId: string;
+  githubUrl: string;
   walrusSiteUrl: string;
 };
