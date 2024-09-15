@@ -4,7 +4,6 @@ import { ExternalLink, SquareArrowOutUpRight } from "lucide-react";
 import { Project } from "@/types/Project";
 import { IconBrandGithub } from "@tabler/icons-react";
 
-
 export default function ProjectCard({
   project,
   odd,
@@ -28,13 +27,13 @@ export default function ProjectCard({
           <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`}/>
         </video>
       </div>
-      <div className="flex flex-col items-center justify-start grow gap-2">
+      <div className="flex flex-col items-center justify-start grow gap-2 w-full">
         <div className={`text-2xl md:text-5xl text-center ${neueBitBold.className} flex flex-row gap-1 items-top`}>
           <span>{project.name}</span>
           <a href={project.walrusSiteUrl} target="_blank"><ExternalLink className="w-4 transform hover:scale-110 transition-transform text-[#C684F6]" /></a>
           <a href={project.githubUrl} target="_blank"><IconBrandGithub className="w-4 transform hover:scale-110 transition-transform text-[#C684F6]" /></a>
         </div>
-        <span className={`text-sm ${montreal.className} px-4 max-h-[100px] overflow-y-auto whitespace-pre-wrap break-words break-all`}>
+        <span className={`text-sm ${montreal.className} px-4 max-h-[100px] overflow-y-auto whitespace-pre-wrap break-words w-full `}>
           {project.description}
         </span>
       </div> 
