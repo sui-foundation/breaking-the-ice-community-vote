@@ -1,7 +1,6 @@
 [package]
 name = "voting"
 edition = "2024.beta" # edition = "legacy" to use legacy (pre-2024) Move
-published-at = "0x7bda18218981a6cb677a5a3c72db24ea47bc635120473bca4d765021b2ee144b"
 # license = ""           # e.g., "MIT", "GPL", "Apache 2.0"
 # authors = ["..."]      # e.g., ["Joe Smith (joesmith@noemail.com)", "John Snow (johnsnow@noemail.com)"]
 
