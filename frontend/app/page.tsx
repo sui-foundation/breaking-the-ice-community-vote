@@ -39,7 +39,7 @@ export default function Page() {
         <Image
           src={heroBanner}
           alt="banner"
-          className="object-cover w-full border border-[#99EFE4] border-2 rounded-xl md:max-h-[500px]"
+          className="object-cover w-full border border-[#99EFE4] border-2 rounded-xl max-h-[150px] md:max-h-[500px]"
         />
       </div>
       <div className="w-full px-4 py-1 flex flex-col lg:flex-row items-center stretch gap-4">
