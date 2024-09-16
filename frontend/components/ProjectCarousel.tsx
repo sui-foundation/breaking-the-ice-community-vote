@@ -153,7 +153,7 @@ export default function ProjectCarousel() {
           
         </div>
         <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] bg-[#99EFE4] text-[#0C0F1D]" onClick={() => {redirectToAuthUrl(USER_ROLES.ROLE_2)}}>
-          Log in
+          Log in to vote
         </Button>
       </div>
     </div>
