@@ -112,6 +112,7 @@ export default function ProjectCarousel() {
               odd={index % 2 === 0}
               selected={selectedProjects.includes(project.id)}
               onSelect={() => handleSelectProject(project.id)}
+              showSelect={true}
             />
           ))}
         </div>
@@ -134,10 +135,27 @@ export default function ProjectCarousel() {
   }
 
   return (
-    <div className="rounded-xl w-full flex flex-col items-center justify-center py-4 gap-2">
-      <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] bg-[#99EFE4] text-[#0C0F1D]" onClick={() => redirectToAuthUrl(USER_ROLES.ROLE_2)}>
-        View projects
-      </Button>
+    <div className="relative rounded-xl w-full flex flex-col items-center justify-center py-4 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            project={project}
+            odd={index % 2 === 0}
+            selected={selectedProjects.includes(project.id)}
+            onSelect={() => handleSelectProject(project.id)}
+            showSelect={false}
+          />
+        ))}
+      </div>
+      <div className="sticky bg-[#0C0F1D] border-2 border-[#F7F7F7] rounded-xl bottom-2 flex w-full flex-row items-center justify-between gap-1 py-4 px-4">
+        <div className="flex flex-row items-center">
+          
+        </div>
+        <Button className="bg-[#0C0F1D] rounded-xl border border-[#99EFE4] transform hover:scale-110 transition-transform hover:bg-[#99EFE4] bg-[#99EFE4] text-[#0C0F1D]" onClick={() => {redirectToAuthUrl(USER_ROLES.ROLE_2)}}>
+          Log in
+        </Button>
+      </div>
     </div>
   )
 }

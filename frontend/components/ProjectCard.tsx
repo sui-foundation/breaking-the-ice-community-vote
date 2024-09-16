@@ -9,10 +9,12 @@ export default function ProjectCard({
   odd,
   selected,
   onSelect, 
+  showSelect,
 }: {
   project: Project;
   odd: boolean;
   selected: boolean;
+  showSelect: boolean;
   onSelect: () => void;
 }) {
 
@@ -40,12 +42,15 @@ export default function ProjectCard({
           {project.description}
         </span>
       </div> 
-      <div className="flex flex-row items-center justify-start gap-2">
-        <Checkbox className="border-[#F7F7F7]" onClick={onSelect} />
-        <span>
-          Select
-        </span>
-      </div>
+      {
+        showSelect &&
+        <div className="flex flex-row items-center justify-start gap-2">
+          <Checkbox className="border-[#F7F7F7]" onClick={onSelect} />
+          <span>
+            Select
+          </span>
+        </div>
+      }
     </div>
   )
 }
