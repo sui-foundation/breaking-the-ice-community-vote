@@ -24,7 +24,10 @@ export default function ProjectCard({
     }>
       <div className="h-[250px] w-full flex flex-col items-center justify-center">
         <video controls poster="https://aggregator-devnet.walrus.space/v1/HZWhXCiuVANvQuPD2Oa0AoWKvJ052Vnl4T6oLlNPstQ" className="border rounded-xl border-[#0C0F1D] border-4 max-h-[250px]" >
-          <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`}/>
+          <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`} type="video/mp4"/>
+          <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`} type="video/mov"/>
+          <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`} type="video/ogg"/>
+          <source src={`https://aggregator-devnet.walrus.space/v1/${project.videoBlobId}`} />
         </video>
       </div>
       <div className="flex flex-col items-center justify-start grow gap-2 w-full">
