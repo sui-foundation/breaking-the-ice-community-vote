@@ -14,10 +14,13 @@ public struct ProjectWithAddress has drop {
 public struct TeamOrca has key { id: UID }
 public struct TeamPolarBear has key { id: UID }
 
+const ENotSameLength: u64 = 1;
+
 fun init(_: &mut TxContext) {}
 
 // AdminCap is required to create a shortlist
 entry fun create_shortlist(_: &AdminCap, votes: &Votes, project_ids: vector<u64>, addresses: vector<address>, r: &Random, ctx: &mut TxContext) {
+  assert!(project_ids.length() == addresses.length(), ENotSameLength);
   let mut projects = project_ids.zip_map!(addresses, |i, a| {
     let p = votes.project_list(i);
     ProjectWithAddress {

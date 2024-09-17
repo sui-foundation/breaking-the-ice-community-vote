@@ -8,6 +8,7 @@ module voting::voting {
   use sui::zklogin_verified_issuer::check_zklogin_issuer;
   use sui::vec_set::{Self,VecSet};
   use std::type_name::{Self, TypeName};
+  use sui::address;
 
   const EInvalidProof: u64 = 1;
   const EUserAlreadyVoted: u64 = 2;
@@ -56,7 +57,6 @@ module voting::voting {
       id: object::new(ctx),
       total_votes,
       project_list,
-      // project_ids: vec_set::from_keys(project_list.map!(|p| p.id)),
       ballots,
       voting_active: voting_active,
       whitelist_tokens: vec_set::singleton(tn),
@@ -580,6 +580,8 @@ module voting::voting {
         walrus_site_url: url::new_unsafe(projects[index][3].to_ascii_string()), 
         video_blob_id: projects[index][4].to_string()
       });
+
+      // address::from_bytes(projects[index][5]);
 
       index = index + 1;
     };
